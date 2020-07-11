@@ -1,0 +1,44 @@
+// Copyright 2020 The Go Language Server Authors
+// SPDX-License-Identifier: BSD-3-Clause
+
+syntax = "proto3";
+
+package tools.test;
+
+option go_package = "go.lsp.dev/tools/cmd/protoc-gen-go-jsonshim/testdata/generatedpb";
+option java_multiple_files = true;
+option java_outer_classname = "TypesProto";
+option java_package = "dev.lsp.tools.test.generated";
+
+import "external.proto";
+
+// Simple
+message Simple {
+    uint32 field_a = 1;
+    string field_b = 2;
+    oneof field_c {
+        string name = 3;
+        uint32 number = 4;
+    }
+}
+
+// SimpleMap
+message SimpleMap {
+    uint32 field_a = 1;
+    string field_b = 2;
+    map<string, string> field_c = 3;
+    message Nested {
+        map<string, string> nestedField_d = 1;
+    }
+    Nested field_d = 4;
+}
+
+message ReferencedMap {
+    string field_a = 1;
+    SimpleMap.Nested field_b = 2;
+}
+
+message ImportedReference {
+    uint32 field_a = 1;
+    ExternalSimple field_b = 2;
+}

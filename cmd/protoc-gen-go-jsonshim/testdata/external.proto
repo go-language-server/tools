@@ -1,0 +1,20 @@
+// Copyright 2020 The Go Language Server Authors
+// SPDX-License-Identifier: BSD-3-Clause
+
+syntax = "proto3";
+
+package tools.test;
+
+option go_package = "go.lsp.dev/tools/cmd/protoc-gen-go-jsonshim/testdata/generatedpb";
+option java_multiple_files = true;
+option java_outer_classname = "ExternalProto";
+option java_package = "dev.lsp.tools.test";
+
+// ExternalSimple
+message ExternalSimple {
+    uint32 field_c = 1;
+    message ExternalNested {
+        map<string, string> field_a = 1;
+    }
+    ExternalNested field_d = 2;
+}
