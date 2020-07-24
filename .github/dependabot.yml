@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/cmd/protoc-gen-go-jsonshim"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "module: "
+    labels:
+      - "dependencies"
+    pull-request-branch-name:
+      separator: "/"
+    reviewers:
+      - "zchee"
